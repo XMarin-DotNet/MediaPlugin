@@ -164,14 +164,6 @@ namespace Plugin.Media
 				else
 				{
 					picker.DismissViewController(true, onDismiss);
-					try
-					{
-						picker.Dispose();
-					}
-					catch
-					{
-
-					}
 				}
 			}
 		}
@@ -734,6 +726,7 @@ namespace Plugin.Media
 
 			var stream = new MemoryStream();
 			imageData.AsStream().CopyTo(stream);
+			stream.Position = 0;
 			imageData.Dispose();
 			return stream;
 
